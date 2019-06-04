@@ -37,9 +37,11 @@ class TimeMachine(TimeService):
         :return: string
         """
         r = self.minute + self.value
+
         if r > 59:
-            self.hour = self.hour + 1
-            self.minute = r - 60
+            x = int((r / 60))
+            self.hour = self.hour + x
+            self.minute = r - (60 * x)
 
         if self.hour > 12:
             self.hour = 1
