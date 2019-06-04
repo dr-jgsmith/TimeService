@@ -41,17 +41,18 @@ class TimeMachine(TimeService):
 
         self.hour = self.hour + x
         self.minute = r - (60 * x)
-
-        if ((self.hour / 12) % 2) == 0:
-            pass
-        else:
+        # Count number of cycles for computing merdieum changes
+        cycles = int(self.hour / 12)
+        
+        if (cycles % 2) == 0:
             if self.merdieum == 'am':
                 self.merdieum = 'pm'
             else:
                 self.merdieum = 'am'
-
-        if self.hour > 12:
-            self.hour = self.hour - 12
+        else:
+            pass
+        # convert hours from military time to common clock time.
+        self.hour = self.hour - cycles * 12
 
         if self.minute > 9:
             pass
@@ -60,3 +61,5 @@ class TimeMachine(TimeService):
 
         formatted_time = str(self.hour) + ':' + str(self.minute) + ' ' + self.merdieum.upper()
         return formatted_time
+
+
