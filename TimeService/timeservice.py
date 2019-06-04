@@ -57,4 +57,3 @@ class TimeMachine(TimeService):
 
         formatted_time = str(self.hour) + ':' + str(self.minute) + ' ' + self.merdieum.upper()
         return formatted_time
-
