@@ -41,18 +41,19 @@ class TimeMachine(TimeService):
 
         self.hour = self.hour + x
         self.minute = r - (60 * x)
-        # Count number of cycles for computing merdieum changes
         cycles = int(self.hour / 12)
-        
-        if (cycles % 2) == 0:
-            if self.merdieum == 'am':
-                self.merdieum = 'pm'
+        if cycles > 0:
+            if (cycles % 2) == 0:
+                pass
             else:
-                self.merdieum = 'am'
-        else:
-            pass
-        # convert hours from military time to common clock time.
+                if self.merdieum == 'am':
+                    self.merdieum = 'pm'
+                else:
+                    self.merdieum = 'am'
+
         self.hour = self.hour - cycles * 12
+        if self.hour == 0:
+            self.hour = 1
 
         if self.minute > 9:
             pass
