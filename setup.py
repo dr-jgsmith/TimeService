@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='TimeService',
-      version='0.02',
+      version='0.03',
       description='Toolkit for computing with hypergraphs and hypernetworks',
       classifiers=[
           'Development Status :: 1 - Alpha',

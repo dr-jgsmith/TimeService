@@ -37,14 +37,12 @@ class TimeMachine(TimeService):
         :return: string
         """
         r = self.minute + self.value
+        x = int((r / 60))
+        continuous_t = self.hour + x
+        self.hour = self.hour + x
+        self.minute = r - (60 * x)
 
-        if r > 59:
-            x = int((r / 60))
-            self.hour = self.hour + x
-            self.minute = r - (60 * x)
-
-        if self.hour > 12:
-            self.hour = 1
+        if continuous_t > 12:
             if self.merdieum == 'am':
                 self.merdieum = 'pm'
             else:
