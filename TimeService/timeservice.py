@@ -42,7 +42,8 @@ class TimeMachine(TimeService):
         self.hour = self.hour + x
         self.minute = r - (60 * x)
 
-        if continuous_t > 12:
+        if self.hour > 12:
+            self.hour = self.hour - 12
             if self.merdieum == 'am':
                 self.merdieum = 'pm'
             else:
