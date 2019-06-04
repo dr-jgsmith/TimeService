@@ -50,6 +50,9 @@ class TimeMachine(TimeService):
             else:
                 self.merdieum = 'am'
 
+        if self.hour > 12:
+            self.hour = self.hour - 12
+
         if self.minute > 9:
             pass
         else:
