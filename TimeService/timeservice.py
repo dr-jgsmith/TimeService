@@ -6,18 +6,19 @@ class TimeService:
         :param time_param: string
         """
         # Split string sequence
-        timeset = time_param.split(' ')
+        self.time_param = time_param
+        timeset = self.time_param.split(' ')
         # set time variables
         self.hour = int(timeset[0].split(':')[0])
         self.minute = int(timeset[0].split(':')[1])
-        self.merdieum = timeset[1].lower()
+        self.meridiem = timeset[1]
 
-    def time(self):
+    def get_time(self):
         """
         Call currently set time
         :return: string
         """
-        return str(self.hour) + ':' + str(self.minute) + ' ' + self.merdieum
+        return self.time_param
 
 
 class TimeMachine(TimeService):
@@ -41,26 +42,26 @@ class TimeMachine(TimeService):
 
         self.hour = self.hour + x
         self.minute = r - (60 * x)
+
         cycles = int(self.hour / 12)
         if cycles > 0:
             if (cycles % 2) == 0:
                 pass
             else:
-                if self.merdieum == 'am':
-                    self.merdieum = 'pm'
+                if self.meridiem == 'AM':
+                    self.meridiem = 'PM'
                 else:
-                    self.merdieum = 'am'
+                    self.meridiem = 'AM'
 
         self.hour = self.hour - cycles * 12
         if self.hour == 0:
             self.hour = 1
 
-        if self.minute > 9:
-            pass
-        else:
+        if self.minute < 10:
             self.minute = str(0) + str(self.minute)
 
-        formatted_time = str(self.hour) + ':' + str(self.minute) + ' ' + self.merdieum.upper()
-        return formatted_time
+        new_time: str = str(self.hour) + ':' + str(self.minute) + ' ' + self.meridiem.upper()
+        return new_time
+
 
 
