@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(name='TimeService',
       version='0.04',
-      description='Toolkit for computing with hypergraphs and hypernetworks',
+      description='TimeService - Code Challenge',
       classifiers=[
           'Development Status :: 1 - Alpha',
           'License :: OSI Approved :: MIT License',
@@ -13,5 +13,5 @@ setup(name='TimeService',
       author_email='justingriffis@wsu.edu',
       license='MIT',
       packages=['TimeService'],
-      include_package_data=True,
+      include_package_data=False,
       zip_safe=False)
